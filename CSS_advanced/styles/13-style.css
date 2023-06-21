@@ -40,7 +40,7 @@ body {
 }
 
 /* Link styles */
-a[href] {
+a:link {
     color: var(--text-color);
     text-decoration: none;
 }
