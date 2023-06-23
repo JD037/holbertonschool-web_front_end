@@ -433,6 +433,15 @@ a:active {
     display: none;
 }
 
+/* Card and section tagline styles */
+.card-category,
+.section-tagline {
+    color: var(--color-primary);
+    font-family: var(--font-family-title);
+    text-transform: var(--section-tagline-transform);
+    font-weight: var(--font-weight-bold);
+}
+
 /* Section styles */
 .section {
     padding: var(--section-padding);
@@ -460,15 +469,6 @@ a:active {
     text-align: var(--section-footer-align);
 }
 
-/* Card and section tagline styles */
-.card-category,
-.section-tagline {
-    color: var(--color-primary);
-    font-family: var(--font-family-title);
-    text-transform: var(--section-tagline-transform);
-    font-weight: var(--font-weight-bold);
-}
-
 .container {
     width: 960px;
     margin: 0 auto;
@@ -485,18 +485,18 @@ h1, h2, h3, h4, h5, h6 {
     padding: var(--footer-padding);
 }
 
-.navbar-menu {
-    float: right;
-}
-  
 .nav {
     margin: 0;
     padding: 0;
     list-style: none;
     text-align: center;
 }
+
+.navbar-menu {
+    float: right;
+}
   
-nav .nav-item {
+.nav .nav-item {
     font-family: var(--nav-item-font-family);
     font-weight: var(--nav-item-font-weight);
     font-size: var(--nav-item-font-size);
@@ -505,11 +505,11 @@ nav .nav-item {
     margin: var(--nav-item-margin);
 }
   
-nav .nav-link {
+.nav .nav-link {
     display: block;
     padding: calc(0.5 * var(--root-element)) calc(1 * var(--root-element));
 }
   
-nav .nav-link:hover {
+.nav .nav-link:hover {
     color: var(--nav-item-link-hover);
 }
