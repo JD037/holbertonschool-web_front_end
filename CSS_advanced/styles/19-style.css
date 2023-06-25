@@ -350,11 +350,14 @@
   }
 
   :root {
+    /* define main color variables */
     --color-primary: #d73953;
     --color-black: #090909;
     --color-white: #ffffff;
     --color-light-grey: #f3f3f3;
     --color-dark-grey: #353535;
+
+    /* define text properties */
     --text-color: var(--color-black);
     --font-family-base: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     --font-family-title: 'Raleway', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -365,9 +368,13 @@
     --font-size-xx-large: 4.8rem;
     --font-weight-regular: 400;
     --font-weight-bold: 700;
+
+    /* define line height */
     --line-height-small: 1.2;
     --line-height-base: 1.5;
     --line-height-big: 1.8;
+
+    /* define section properties */
     --section-header-align: center;
     --section-tagline-transform: uppercase;
     --section-title-margin: 0;
@@ -377,6 +384,9 @@
     --section-body-padding: 0 0 3rem;
     --section-footer-padding: 3rem 0 0;
     --section-footer-align: center;
+    --section-tagline-margin: 0;
+
+    /* define footer and navigation properties */
     --footer-padding: 5rem 0 1rem;
     --nav-item-font-family: var(--font-family-title);
     --nav-item-font-weight: var(--font-weight-bold);
@@ -385,9 +395,9 @@
     --nav-item-display: inline-block;
     --nav-item-margin: 0 0 3rem 0;
     --nav-item-link-hover: var(--color-primary);
-    --section-tagline-margin: 0;
 }
 
+/* global box sizing */
 *,
 *::before,
 *::after {
@@ -395,11 +405,13 @@
 }
 
 html {
+    /* smooth scroll behavior and root font size for responsive typography */
     scroll-behavior: smooth;
     font-size: 62.5%;
 }
 
 body {
+    /* base font properties */
     color: var(--text-color);
     font-family: var(--font-family-base);
     font-size: var(--font-size-medium);
@@ -407,6 +419,7 @@ body {
     line-height: var(--line-height-base);
 }
 
+/* styling for different states of anchor links */
 a:link {
     color: var(--text-color);
     text-decoration: none;
@@ -424,18 +437,22 @@ a:active {
     background-color: var(--color-light-grey);
 }
 
+/* hide visually hidden elements */
 .visually-hidden {
     display: none;
 }
 
+/* color styling for card category */
 .card-category {
     color: var(--color-primary);
 }
 
+/* float navigation menu to the right */
 .navbar-menu {
     float: right;
 }
 
+/* styling for navigation list */
 .nav {
     margin: 0;
     padding: 0;
@@ -443,6 +460,7 @@ a:active {
     text-align: center;
 }
 
+/* styling for navigation items */
 .nav .nav-item {
     font-family: var(--nav-item-font-family);
     font-weight: var(--nav-item-font-weight);
@@ -452,33 +470,40 @@ a:active {
     margin: var(--nav-item-margin);
 }
 
+/* styling for navigation links */
 .nav .nav-link {
     display: block;
     padding: 0.5rem 1rem;
 }
 
+/* hover effect for navigation links */
 .nav .nav-link:hover {
     color: var(--nav-item-link-hover);
 }
 
+/* basic section styling */
 .section {
     padding: var(--section-padding);
 }
 
+/* styling for section header */
 .section-header {
     text-align: var(--section-header-align);
     padding: var(--section-header-padding);
 }
 
+/* styling for section body */
 .section-body {
     padding: var(--section-body-padding);
 }
 
+/* styling for section footer */
 .section-footer {
     text-align: var(--section-footer-align);
     padding: var(--section-footer-padding);
 }
 
+/* styling for section title */
 .section-title {
     font-family: var(--font-family-title);
     font-size: var(--font-size-xx-large);
@@ -487,6 +512,7 @@ a:active {
     color: var(--section-title-color);
 }
 
+/* styling for section tagline */
 .section-tagline {
     margin: var(--section-tagline-margin);
     color: var(--color-primary);
@@ -495,45 +521,53 @@ a:active {
     font-weight: var(--font-weight-bold);
 }
 
+/* central container styling */
 .container {
     width: 960px;
     margin-left: auto;
     margin-right: auto;
 }
 
+/* typography for headings */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-family-title);
     font-weight: var(--font-weight-bold);
 }
 
+/* footer padding */
 .footer {
     padding: var(--footer-padding);
 }
 
+/* remove default list styles and padding for row class */
 ul.row {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
+/* 1/3 column grid styling */
 .col-1-3 {
     width: 33.33%;
     float: left;
     padding: 0.5rem;
 }
 
+/* 1/2 column grid styling */
 .col-1-2 {
     width: 50%;
     float: left;
     padding: 0.5rem;
 }
 
+/* styling for copyright text in footer */
 .footer-copyright {
     margin: 0;
     font-size: var(--font-size-small);
     color: var(--text-color);
 }
 
+/* align text to the right for lists in footer */
 .footer ul {
     text-align: right;
 }
