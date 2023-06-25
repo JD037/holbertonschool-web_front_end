@@ -545,7 +545,7 @@ ul.row {
     padding: 0;
     list-style: none;
 }
-
+/* common styling for col class */
 [class^="col-"] {
     float: left;
     padding: 0.5rem;
