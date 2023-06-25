@@ -394,7 +394,7 @@
     --nav-item-letter-spacing: 0.04rem;
     --nav-item-display: inline-block;
     --nav-item-margin: 0 0 3rem 0;
-    --nav-item-link-hover: var(--color-primary);
+    --nav-item-link-hover: var(--color-white);
 
     /* define button properties */
     --button-display: inline-block;
@@ -514,7 +514,6 @@ a:active {
     text-align: center;
 }
 
-/* styling for navigation items */
 .nav .nav-item {
     font-family: var(--nav-item-font-family);
     font-weight: var(--nav-item-font-weight);
@@ -524,31 +523,28 @@ a:active {
     margin: var(--nav-item-margin);
 }
 
-/* styling for navigation links */
 .nav .nav-link {
     display: block;
     padding: 0.5rem 1rem;
 }
 
-/* hover effect for navigation links */
 .nav .nav-link:hover {
-    color: var(--color-white);
+    color: var(--nav-item-link-hover);
 }
 
-/* Styling for nav-links, setting up a dynamic underline on hover */
-.nav .nav-item:hover .nav-link:before {
-    background-color: var(--color-primary);
-    width: 100%;
-}
-
-.nav .nav-link:before {
+.nav .nav-link::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     background-color: var(--color-white);
     width: 0;
-    height: 2rem;
+    height: 0.2rem;
+}
+
+.nav .nav-item:hover .nav-link::before {
+    background-color: var(--color-primary);
+    width: 100%;
 }
 
 /* basic section styling */
