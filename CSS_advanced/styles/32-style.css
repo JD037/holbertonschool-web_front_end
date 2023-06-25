@@ -493,7 +493,7 @@ a:active {
     color: var(--button-hover-color);  /* change font color when button is hovered */
     text-decoration: var(--button-hover-text-decoration);  /* change text decoration when button is hovered */
     background: var(--button-hover-background);  /* change background when button is hovered */
-    transition: var(--transition-duration);
+    transition-duration: var(--transition-duration);
     transition-property: color, background-color;
 }
 
