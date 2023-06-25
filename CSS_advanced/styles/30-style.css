@@ -733,6 +733,7 @@ ul.row {
     width: 100%;
     object-fit: cover;
     object-position: bottom;
+    vertical-align: bottom;
 }
 
 .card-work .card-inner {
@@ -744,7 +745,7 @@ ul.row {
 }
 
 .card-work:hover .card-inner {
-    background: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .card-work .card-title {
