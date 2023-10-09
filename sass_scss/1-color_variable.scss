@@ -1,7 +1,11 @@
-// Task: Color variable
+/* Task: Color variable - Assigning text color to body and p using a Sass variable */
 
-$main-color: #3D3D3D; // Defining a Sass variable for the color
+$text-color: #3D3D3D;  // Defining a Sass variable for the color
 
-body, p {
-    color: $main-color; // Using the Sass variable to assign color
+body {
+    color: $text-color;  // Using the Sass variable to assign color to body
+}
+
+p {
+    color: $text-color;  // Using the Sass variable to assign color to p
 }
