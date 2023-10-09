@@ -1,0 +1,22 @@
+# Sass cache directory
+.sass-cache/
+
+# Compiled CSS output (if you're compiling to a .css file in the same repo)
+*.css
+
+# Temporary files and directories
+*.tmp
+*~
+
+# Editor-specific files (like swap files)
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

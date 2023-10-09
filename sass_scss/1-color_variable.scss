@@ -1,0 +1,7 @@
+// Task: Color variable
+
+$main-color: #3D3D3D; // Defining a Sass variable for the color
+
+body, p {
+    color: $main-color; // Using the Sass variable to assign color
+}
