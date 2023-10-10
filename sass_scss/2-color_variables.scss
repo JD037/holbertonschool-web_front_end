@@ -1,0 +1,17 @@
+/* Task: Colors - Assigning text and background colors to body, p, and h2 using Sass variables */
+
+$text-color: #3D3D3D;  // Defining a Sass variable for the text color
+$bg-color: #6D6D6D;    // Defining a Sass variable for the background color
+
+body {
+    color: $text-color;           // Using the Sass variable to assign text color to body
+    background-color: $bg-color;  // Using the Sass variable to assign background color to body
+}
+
+p {
+    color: $text-color;  // Using the Sass variable to assign text color to p
+}
+
+h2 {
+    background-color: $bg-color;  // Using the Sass variable to assign background color to h2
+}
