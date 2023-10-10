@@ -62,20 +62,5 @@ Once the project is open in your web browser, you can explore the various flexbo
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-#### License
-
-This project is licensed under the MIT License - see the 
-�
-�
-�
-�
-�
-�
-�
-.
-�
-�
-LICENSE.md(LICENSE.md) file for details.
-
 ##### Author
 [Josh Davis]
