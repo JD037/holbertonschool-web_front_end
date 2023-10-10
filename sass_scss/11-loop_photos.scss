@@ -1,0 +1,9 @@
+// Importing the list of names from 11-photos.scss
+@import '11-photos';
+
+// Iterating over each name in $list-names to generate the corresponding class
+@each $name in $list-names {
+    .photo-#{$name} {
+        background: image-url("photos/#{$name}.jpg") no-repeat;
+    }
+}
