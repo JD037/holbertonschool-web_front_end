@@ -1,0 +1,13 @@
+/* Task: Nested and nested again - Assigning font sizes to body, h1, and h1 with class .smaller inside body */
+
+body {
+    font-size: 14px;  // Assigning font size to all body tags
+    
+    h1 {  // Nested declaration for h1 tags inside body
+        font-size: 16px;
+        
+        &.smaller {  // Further nested declaration for h1 tags with class .smaller inside body
+            font-size: 12px;
+        }
+    }
+}
