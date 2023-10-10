@@ -1,0 +1,9 @@
+/* Task: Nested class - Assigning styles to elements inside body and styling .red class elements */
+
+body {
+    color: #3D3D3D;  // Assigning text color to all elements inside body
+    
+    .red {  // Nested declaration for elements with class .red inside body
+        color: #FF0000;
+    }
+}
