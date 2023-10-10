@@ -1,0 +1,9 @@
+/* Task: Nested hover - Assigning styles to button tags and changing styles on hover */
+
+button {
+    color: #FF0000;  // Assigning text color to button tags
+    
+    &:hover {  // Nested declaration for button tags when hovered
+        color: #00FF00;
+    }
+}
