@@ -6,13 +6,13 @@ This project is designed to deepen your understanding of HTML forms by walking y
 
 By the end of this project, you will be able to:
 
-Create an HTML5 form.
-Select the appropriate input type for a given requirement.
-Constrain a form field with regular expressions.
-Style form inputs based on their validity and requirement status.
-Build a comment form.
-Construct a simple search form.
-Understand usability and accessibility practices in forms.
+-Create an HTML5 form.
+-Select the appropriate input type for a given requirement.
+-Constrain a form field with regular expressions.
+-Style form inputs based on their validity and requirement status.
+-Build a comment form.
+-Construct a simple search form.
+-Understand usability and accessibility practices in forms.
 
 ## Requirements
 
