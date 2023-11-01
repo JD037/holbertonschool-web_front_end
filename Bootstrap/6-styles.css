@@ -1,0 +1,44 @@
+/* New styles for btn-primary */
+.btn-primary {
+    background-color: #E0003C;
+}
+
+.btn-primary:hover, 
+.btn-primary:focus, 
+.btn-primary:active {
+    background-color: #BC1340;
+}
+
+/* New styles for btn-outline-primary */
+.btn-outline-primary {
+    color: #E0003C;
+    border-color: #E0003C;
+}
+
+.btn-outline-primary:hover {
+    background-color: #E0003C;
+    color: #ffffff;
+}
+
+/* New styles for links */
+a {
+    color: #E0003C;
+}
+
+a:hover, 
+a:focus {
+    color: #E0003C;
+}
+
+/* New styles for card */
+.card, 
+.card-header, 
+.card-footer {
+    border-color: #E0003C;
+    border-radius: 1rem;
+}
+
+/* New style for .text-muted */
+.text-muted {
+    color: #8C8C8C !important;
+}
