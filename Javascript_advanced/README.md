@@ -31,12 +31,12 @@ To get started with this project:
 1. Clone the repository:
 
    ```bash
-   git clone [https://github.com/JD037/holbertonschool-web_front_end] ```
+   git clone [https://github.com/JD037/holbertonschool-web_front_end]
 
 2. Navigate to the repository:
 
     ```bash
-   cd [holbertonschool-web_front_end/Javascript_advanced] ```
+   cd [holbertonschool-web_front_end/Javascript_advanced]
 
 ## Tasks
 
