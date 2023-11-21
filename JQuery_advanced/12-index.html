@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Task 12 - Delete Post</title>
+    <!-- Import jQuery slim version -->
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<script type="application/javascript">
+    $(document).ready(function() {
+        function addPostRow(data) {
+            var deleteSpan = $('<span>').text('(delete)').css('cursor', 'pointer').click(function() {
+                deletePost(data.id);
+            });
+
+            var postParagraph = $('<p>').attr('id', `row-${data.id}`).append(
+                deleteSpan,
+                $('<span>').text(`Post created with id ${data.id}, title: ${data.title}, author: ${data.author}`)
+            );
+
+            $('body').append(postParagraph);
+        }
+
+        function listPosts() {
+            fetch('http://localhost:3000/posts')
+                .then(response => response.json())
+                .then(posts => {
+                    posts.forEach(post => {
+                        addPostRow(post);
+                    });
+                }).catch(() => {
+                    alert('Server Error');
+                });
+        }
+
+        function buildForm() {
+            var form = $('<form>');
+            form.append(
+                $('<div>').append(
+                    $('<label>').attr('for', 'author').text('Author'),
+                    $('<input>').attr({ type: 'text', id: 'author' })
+                )
+            );
+            form.append(
+                $('<div>').append(
+                    $('<label>').attr('for', 'title').text('Title'),
+                    $('<textarea>').attr({ id: 'title' })
+                )
+            );
+            form.append(
+                $('<input>').attr({ type: 'submit', value: 'Submit' })
+            );
+            
+            form.submit(function(e) {
+                e.preventDefault();
+                sendForm();
+            });
+
+            $('body').append(form);
+        }
+
+        function sendForm() {
+            var postData = {
+                title: $('#title').val(),
+                author: $('#author').val()
+            };
+
+            fetch('http://localhost:3000/posts', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(postData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                addPostRow(data);
+                $('#title').val('');
+                $('#author').val('');
+            })
+            .catch(() => {
+                alert('Error sending the POST query');
+            });
+        }
+
+        function deletePost(id) {
+            fetch(`http://localhost:3000/posts/${id}`, {
+                method: 'DELETE'
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                $(`#row-${id}`).remove();
+            })
+            .catch(() => {
+                alert('Post was not deleted');
+            });
+        }
+
+        listPosts();
+        buildForm();
+    });
+</script>
+
+</body>
+</html>
