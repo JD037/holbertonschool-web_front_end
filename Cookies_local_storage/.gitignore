@@ -7,6 +7,7 @@
 !src/
 !src/index.js
 !*.html
+!README.md
 
 # And not these directories and the files inside them...
 !public/
