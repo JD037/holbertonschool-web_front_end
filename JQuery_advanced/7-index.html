@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8"/>
+    <title>wiki query</title>
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+    <script type="application/javascript">
+        $(document).ready(function() {
+            function createSearchForm() {
+                var form = $('<form>');
+                form.append($('<input>').attr('type', 'text'));
+                form.append($('<input>').attr('type', 'submit').val('Search'));
+                form.append($('<ul>')); // Empty <ul> for search results
+
+                form.submit(function(e) {
+                    e.preventDefault();
+                    var searchValue = $('input[type="text"]', form).val();
+                    queryWikipedia(searchValue);
+                });
+
+                $('body').append(form);
+            }
+
+            function addNewArticle(id, title, snippet) {
+                var li = $('<li>');
+                li.append($('<p>').append($('<span>').text(id + ' - '), $('<b>').text(title)));
+                li.append($('<p>').html(snippet)); // Use .html() to render snippet as HTML
+                $('ul').append(li);
+            }
+
+            function queryWikipedia(search) {
+            var url = "https://en.wikipedia.org/w/api.php";
+            var params = {
+                action: "query",
+                list: "search",
+                srsearch: search,
+                format: "json",
+                origin: "*" // This is needed for CORS
+            };
+
+            // Construct the full URL with parameters
+            url = url + '?' + new URLSearchParams(params).toString();
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    data.query.search.forEach(function(entry) {
+                        addNewArticle(entry.pageid, entry.title, entry.snippet);
+                    });
+                })
+                .catch(error => {
+                    console.error("Failed to fetch data", error);
+                });
+        }
+
+            createSearchForm();
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>
