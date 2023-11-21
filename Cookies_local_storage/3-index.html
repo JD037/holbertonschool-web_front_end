@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login to the website</title>
+    <style>
+        h1 {
+            font-weight: bold;
+        }
+        .bold {
+            font-weight: bold;
+        }
+        .logout-link {
+            font-style: italic;
+            font-weight: normal;
+            margin-left: 10px;
+            color: black;
+            text-decoration: none;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="loginForm">
+        <h1>Login to the website</h1>
+        <div>
+            <input type="text" id="firstname" placeholder="Firstname">
+            <input type="text" id="email" placeholder="Email">
+            <button onclick="setCookiesAndShowWelcome()">Log me in</button>
+        </div>
+    </div>
+    <div id="welcomeMessage" class="hidden"></div>
+    <script>
+        function setCookiesAndShowWelcome() {
+            const firstname = document.getElementById('firstname').value;
+            const email = document.getElementById('email').value;
+
+            // Set cookies for 10 days
+            const date = new Date();
+            date.setTime(date.getTime() + (10 * 24 * 60 * 60 * 1000));
+            const expires = "expires=" + date.toUTCString();
+
+            document.cookie = `firstname=${firstname};path=/;${expires}`;
+            document.cookie = `email=${email};path=/;${expires}`;
+
+            showWelcomeMessageOrForm();
+        }
+
+        function deleteCookiesAndShowForm() {
+            document.cookie = 'firstname=;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT';
+            document.cookie = 'email=;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT';
+            showWelcomeMessageOrForm();
+        }
+
+        function showWelcomeMessageOrForm() {
+            const firstname = getCookie('firstname');
+            if (firstname) {
+                document.getElementById('loginForm').classList.add('hidden');
+                const welcomeMessageDiv = document.getElementById('welcomeMessage');
+                welcomeMessageDiv.classList.remove('hidden');
+                welcomeMessageDiv.innerHTML = `<h1>Welcome: ${firstname} <a href="#" class="logout-link" onclick="deleteCookiesAndShowForm()">(logout</a>)</h1>`;
+            } else {
+                document.getElementById('loginForm').classList.remove('hidden');
+                document.getElementById('welcomeMessage').classList.add('hidden');
+            }
+        }
+
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return "";
+        }
+
+        // Check cookie status on page load
+        window.onload = showWelcomeMessageOrForm;
+    </script>
+</body>
+</html>
