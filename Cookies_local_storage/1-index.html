@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login to the website</title>
+    <style>
+        h1 {
+            font-weight: bold;
+        }
+        .bold {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Login to the website</h1>
+    <div>
+        <input type="text" id="firstname" placeholder="Firstname">
+        <input type="text" id="email" placeholder="Email">
+        <button onclick="setCookies()">Log me in</button>
+    </div>
+    <h2 class="bold">Cookies</h2> <!-- Bold title for cookies -->
+    <div>
+        <button onclick="showCookies()">Show the cookies</button>
+        <p id="cookieDisplay"></p> <!-- Element to display cookies -->
+    </div>
+    <script>
+        function setCookies() {
+            const firstname = document.getElementById('firstname').value;
+            const email = document.getElementById('email').value;
+
+            // Calculate the date for ten days from now
+            const date = new Date();
+            date.setTime(date.getTime() + (10 * 24 * 60 * 60 * 1000)); // 10 days in milliseconds
+            const expires = "expires=" + date.toUTCString(); // Convert the date to a UTC string
+
+            // Set cookies with the expires attribute
+            document.cookie = `firstname=${firstname};path=/;${expires}`;
+            document.cookie = `email=${email};path=/;${expires}`;
+        }
+
+        function showCookies() {
+            const cookies = document.cookie.split('; ').reduce((acc, current) => {
+                const [key, value] = current.split('=');
+                acc[key] = value;
+                return acc;
+            }, {});
+            // Use the cookieDisplay element to show the cookies
+            const cookieDisplay = document.getElementById('cookieDisplay');
+            cookieDisplay.innerHTML = `Cookies: firstname=${cookies.firstname}, email=${cookies.email}`;
+        }
+    </script>
+</body>
+</html>
