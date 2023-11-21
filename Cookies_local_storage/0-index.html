@@ -3,15 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Login to the website</title>
+    <style>
+        h1 {
+            font-weight: bold;
+        }
+        .bold {
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
+    <h1>Login to the website</h1>
     <div>
         <input type="text" id="firstname" placeholder="Firstname">
         <input type="text" id="email" placeholder="Email">
         <button onclick="setCookies()">Log me in</button>
     </div>
+    <h2 class="bold">Cookies</h2> <!-- Bold title for cookies -->
     <div>
         <button onclick="showCookies()">Show the cookies</button>
+        <p id="cookieDisplay"></p> <!-- Element to display cookies -->
     </div>
     <script>
         function setCookies() {
@@ -27,9 +38,9 @@
                 acc[key] = value;
                 return acc;
             }, {});
-            const p = document.createElement('p');
-            p.innerHTML = `Cookies: firstname=${cookies.firstname}, email=${cookies.email}`;
-            document.body.appendChild(p);
+            // Use the cookieDisplay element to show the cookies
+            const cookieDisplay = document.getElementById('cookieDisplay');
+            cookieDisplay.innerHTML = `Cookies: firstname=${cookies.firstname}, email=${cookies.email}`;
         }
     </script>
 </body>

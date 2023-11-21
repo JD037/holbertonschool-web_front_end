@@ -8,6 +8,8 @@
 !src/index.js
 !*.html
 !README.md
+!package-lock.json
+!webpack.config.js
 
 # And not these directories and the files inside them...
 !public/
