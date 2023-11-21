@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Wikipedia Search with Pagination</title>
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+    <style>
+        #pagination li {
+            display: inline;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        #pagination .current {
+            font-weight: bold;
+        }
+    </style>
+    <script type="application/javascript">
+        $(document).ready(function() {
+            var itemsPerPage = 10; // Define itemsPerPage here
+
+            function createSearchForm() {
+                var form = $('<form>');
+                form.append($('<input>').attr('type', 'text'));
+                form.append($('<input>').attr('type', 'submit').val('Search'));
+                form.append($('<ul>')); // Empty <ul> for search results
+
+                form.submit(function(e) {
+                    e.preventDefault();
+                    var searchValue = $('input[type="text"]', form).val();
+                    queryWikipedia(searchValue);
+                });
+
+                $('body').append(form);
+                $('body').append($('<div>').attr('id', 'pagination')); // Append the pagination container
+            }
+
+            function addNewArticle(id, title, snippet) {
+                var li = $('<li>');
+                li.append($('<p>').append($('<span>').text(id + ' - '), $('<b>').text(title)));
+                li.append($('<p>').html(snippet)); // Use .html() to render snippet as HTML
+                $('ul').first().append(li); // Ensure we're adding to the first <ul> in case of multiple
+            }
+
+            function queryWikipedia(search, offset = 0) {
+                var url = "https://en.wikipedia.org/w/api.php";
+                var params = {
+                    action: "query",
+                    list: "search",
+                    srsearch: search,
+                    sroffset: offset,
+                    format: "json",
+                    origin: "*"
+                };
+
+                fetch(url + '?' + new URLSearchParams(params).toString())
+                    .then(response => response.json())
+                    .then(data => {
+                        $('ul').empty(); // Clear current search results
+                        var totalHits = data.query.searchinfo.totalhits;
+                        data.query.search.forEach(function(entry) {
+                            addNewArticle(entry.pageid, entry.title, entry.snippet);
+                        });
+                        buildPagination(totalHits, itemsPerPage, offset);
+                    })
+                    .catch(error => {
+                        console.error("Failed to fetch data", error);
+                    });
+            }
+
+            function buildPagination(numberOfItems, itemsPerPage, currentOffset) {
+                var totalPages = Math.ceil(numberOfItems / itemsPerPage);
+                var currentPage = Math.floor(currentOffset / itemsPerPage); // Use floor instead of division
+                var paginationList = $('#pagination');
+                paginationList.empty(); // Reset the pagination list
+
+                for (var i = 0; i < totalPages; i++) {
+                    var pageItem = $('<li>').text(i + 1);
+                    if (i === currentPage) {
+                        pageItem.addClass('current');
+                    }
+                    pageItem.click((function(pageNum) {
+                        return function() {
+                            var searchValue = $('input[type="text"]').val();
+                            queryWikipedia(searchValue, pageNum * itemsPerPage);
+                        };
+                    })(i));
+                    paginationList.append(pageItem);
+                }
+            }
+
+            createSearchForm();
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>
