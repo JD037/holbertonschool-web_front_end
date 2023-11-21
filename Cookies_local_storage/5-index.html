@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Shopping Cart</title>
+    <style>
+        ul {
+            list-style-type: none;
+        }
+        li {
+            cursor: pointer;
+            padding: 5px;
+            background-color: #f0f0f0;
+            margin-bottom: 5px;
+            width: 200px;
+        }
+        li:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Shopping Cart</h1>
+    <div id="store"></div>
+    <script>
+        const availableItems = ['Shampoo', 'Soap', 'Sponge', 'Water'];
+
+        function checkLocalStorage() {
+            try {
+                const test = '__storage_test__';
+                localStorage.setItem(test, test);
+                localStorage.removeItem(test);
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        function addItemToCart(item) {
+            localStorage.setItem(item, true);
+            displayCart();
+        }
+
+        function createStore() {
+            if (!checkLocalStorage()) {
+                alert('Sorry, your browser does not support Web storage. Try again with a better one');
+                return;
+            }
+            const storeDiv = document.getElementById('store');
+            const list = document.createElement('ul');
+            availableItems.forEach((item) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = item;
+                listItem.onclick = function() { addItemToCart(item); };
+                list.appendChild(listItem);
+            });
+            storeDiv.appendChild(list);
+        }
+
+        function displayCart() {
+            let itemsInCart = 0;
+            for (let i = 0; i < localStorage.length; i++) {
+                if (localStorage.getItem(localStorage.key(i))) {
+                    itemsInCart++;
+                }
+            }
+            if (itemsInCart > 0) {
+                let cartMessage = document.getElementById('cartMessage');
+                if (!cartMessage) {
+                    cartMessage = document.createElement('p');
+                    cartMessage.id = 'cartMessage';
+                    document.body.appendChild(cartMessage);
+                }
+                cartMessage.textContent = `You previously had ${itemsInCart} items in your cart`;
+            }
+        }
+
+        // Initialize the store and display the cart on load
+        window.onload = function() {
+            createStore();
+            displayCart();
+        };
+    </script>
+</body>
+</html>
